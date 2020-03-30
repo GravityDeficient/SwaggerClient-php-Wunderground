@@ -1,0 +1,201 @@
+swagger: '2.0'
+info:
+  version: 0.1.0
+  title: "The Weather Company PWS API"
+  description: "APIs for Personal Weather Station Contributors. This is an unofficial openAPI document for working with The Weather Company (Weather Underground) API data."
+externalDocs:
+  description: "View Official API Documentation"
+  url: "https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY"
+host: "api.weather.com"
+basePath: "/v2/pws"
+tags: 
+- name: "PWS Observations"
+securityDefinitions:
+    APIKeyQueryParam:
+     type: apiKey
+     in: query
+     name: apiKey
+security: 
+  - APIKeyQueryParam: []
+paths:
+  /observations/current:
+    get:
+      tags:
+        - "PWS Observations"
+      description: "Personal Weather Stations (PWS) Current Conditions returns the current conditions observations for the current record.Current record is the last record reported within 60 minutes. If the station has not reported a current conditions in the past 60 minutes, the response will not return an expired observation record (older than 60 minutes); a 'Data Expired' message will be returned instead."
+      operationId: "observationsCurrent"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stationId"
+        in: "query"
+        description: "The PWS station ID"
+        required: true
+        type: "string"
+      - name: "units"
+        in: "query"
+        description: "Unit type"
+        required: true
+        type: "string"
+        enum: [e, m, h]
+      - name: "numericPrecision"
+        in: "query"
+        description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
+        required: false
+        type: "string"
+        enum: [decimal]
+      - name: "format"
+        in: "query"
+        required: true
+        type: "string"
+        enum: [json]
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/observations"
+        400:
+          description: "Invalid status value"
+        401:
+           $ref: '#/responses/UnauthorizedError'
+  /observations/all/1day:
+    get:
+      tags:
+          - "PWS Observations"
+      description: "Personal Weather Station (PWS) Rapid Historical Observations returns the daily observations records in rapid frequency as frequent as every 5 minutes. Actual frequency of reports ranges and is dependent on how frequently an individual Personal Weather Station (PWS) reports data."
+      operationId: "observationsAllOneDay"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "stationId"
+        in: "query"
+        description: "The PWS station ID"
+        required: true
+        type: "string"
+      - name: "units"
+        in: "query"
+        description: "Unit type"
+        required: true
+        type: "string"
+        enum: [e, m, h]
+      - name: "numericPrecision"
+        in: "query"
+        description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
+        required: false
+        type: "string"
+        enum: [decimal]
+      - name: "format"
+        in: "query"
+        required: true
+        type: "string"
+        enum: [json]
+      responses:
+        200:
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/observations"
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+        401:
+           $ref: '#/responses/UnauthorizedError'
+responses:
+  UnauthorizedError:
+    description: API key is missing or invalid
+    headers:
+      WWW_Authenticate:
+        type: string
+definitions:
+  observations:
+    type: "object"
+    properties:
+      country:
+        type: "string"
+        example: "US"
+      epoch:
+        type: "integer"
+        format: "int64"
+      humidity:
+        type: "integer"
+        format: "int32"
+      lat:
+        type: "number"
+        format: "float"
+      lon:
+        type: "number"
+        format: "float"
+      neighborhood:
+        type: "string"
+        example: "WOW Arizona!"
+      obsTimeLocal:
+        type: "string"
+        format: "date-time"
+      obsTimeUtc:
+        type: "string"
+        format: "date-time"
+      qcStatus:
+        type: "integer"
+        minimum: -1
+        maximum: 1
+        description: "Quality control indicator. -1 = No quality control check performed 0 = This observation was marked as possibly incorrect by our quality control algorithm 1 = This observation passed quality control checks"
+      realtimeFrequency:
+        type: "integer"
+      softwareType:
+        type: "string"
+        example: "WS-1001 V2.2.9"
+        description: "Software type of the PWS"
+      solarRadiation:
+        type: "number"
+        format: "float"
+      stationID:
+        type: "string"
+        example: "KAZTUCSO539"
+      uv:
+        type: "number"
+        format: "float"
+      winddir:
+        type: "integer"
+      imperial:
+        type: "object"
+        items:
+          $ref: "#/definitions/measurements"
+      metric:
+        type: "object"
+        items:
+          $ref: "#/definitions/measurements"
+      metric_si:
+        type: "object"
+        items:
+          $ref: "#/definitions/measurements"
+      uk_hybrid:
+        type: "object"
+        items:
+          $ref: "#/definitions/measurements"
+  measurements:
+    type: "object"
+    properties:
+      dewpt: 
+        type: "integer"
+      elev:
+        type: "integer"
+      heatIndex:
+        type: "integer"
+      precipRate:
+        type: "number"
+      precipTotal:
+        type: "number"
+      pressure:
+        type: "number"
+        format: "float"
+      temp:
+        type: "integer"
+      windChill:
+        type: "integer"
+      windGust:
+        type: "integer"
+      windSpeed:
+        type: "integer"
+  
