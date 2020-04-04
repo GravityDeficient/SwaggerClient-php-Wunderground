@@ -8,14 +8,14 @@ externalDocs:
   url: "https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY"
 host: "api.weather.com"
 basePath: "/v2/pws"
-tags: 
-- name: "PWS Observations"
+tags:
+  - name: "PWS Observations"
 securityDefinitions:
-    APIKeyQueryParam:
-     type: apiKey
-     in: query
-     name: apiKey
-security: 
+  APIKeyQueryParam:
+    type: apiKey
+    in: query
+    name: apiKey
+security:
   - APIKeyQueryParam: []
 paths:
   /observations/current:
@@ -25,30 +25,30 @@ paths:
       description: "Personal Weather Stations (PWS) Current Conditions returns the current conditions observations for the current record.Current record is the last record reported within 60 minutes. If the station has not reported a current conditions in the past 60 minutes, the response will not return an expired observation record (older than 60 minutes); a 'Data Expired' message will be returned instead."
       operationId: "observationsCurrent"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "stationId"
-        in: "query"
-        description: "The PWS station ID"
-        required: true
-        type: "string"
-      - name: "units"
-        in: "query"
-        description: "Unit type"
-        required: true
-        type: "string"
-        enum: [e, m, h]
-      - name: "numericPrecision"
-        in: "query"
-        description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
-        required: false
-        type: "string"
-        enum: [decimal]
-      - name: "format"
-        in: "query"
-        required: true
-        type: "string"
-        enum: [json]
+        - name: "stationId"
+          in: "query"
+          description: "The PWS station ID"
+          required: true
+          type: "string"
+        - name: "units"
+          in: "query"
+          description: "Unit type"
+          required: true
+          type: "string"
+          enum: [e, m, h]
+        - name: "numericPrecision"
+          in: "query"
+          description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
+          required: false
+          type: "string"
+          enum: [decimal]
+        - name: "format"
+          in: "query"
+          required: true
+          type: "string"
+          enum: [json]
       responses:
         200:
           description: "successful operation"
@@ -59,38 +59,38 @@ paths:
         400:
           description: "Invalid status value"
         401:
-           $ref: '#/responses/UnauthorizedError'
+          $ref: '#/responses/UnauthorizedError'
   /observations/all/1day:
     get:
       tags:
-          - "PWS Observations"
+        - "PWS Observations"
       description: "Personal Weather Station (PWS) Rapid Historical Observations returns the daily observations records in rapid frequency as frequent as every 5 minutes. Actual frequency of reports ranges and is dependent on how frequently an individual Personal Weather Station (PWS) reports data."
       operationId: "observationsAllOneDay"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "stationId"
-        in: "query"
-        description: "The PWS station ID"
-        required: true
-        type: "string"
-      - name: "units"
-        in: "query"
-        description: "Unit type"
-        required: true
-        type: "string"
-        enum: [e, m, h]
-      - name: "numericPrecision"
-        in: "query"
-        description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
-        required: false
-        type: "string"
-        enum: [decimal]
-      - name: "format"
-        in: "query"
-        required: true
-        type: "string"
-        enum: [json]
+        - name: "stationId"
+          in: "query"
+          description: "The PWS station ID"
+          required: true
+          type: "string"
+        - name: "units"
+          in: "query"
+          description: "Unit type"
+          required: true
+          type: "string"
+          enum: [e, m, h]
+        - name: "numericPrecision"
+          in: "query"
+          description: "Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used."
+          required: false
+          type: "string"
+          enum: [decimal]
+        - name: "format"
+          in: "query"
+          required: true
+          type: "string"
+          enum: [json]
       responses:
         200:
           schema:
@@ -101,7 +101,7 @@ paths:
         400:
           description: "Invalid status value"
         401:
-           $ref: '#/responses/UnauthorizedError'
+          $ref: '#/responses/UnauthorizedError'
 responses:
   UnauthorizedError:
     description: API key is missing or invalid
@@ -159,25 +159,17 @@ definitions:
       winddir:
         type: "integer"
       imperial:
-        type: "object"
-        items:
-          $ref: "#/definitions/measurements"
+        $ref: "#/definitions/measures"
       metric:
-        type: "object"
-        items:
-          $ref: "#/definitions/measurements"
+        $ref: "#/definitions/measures"
       metric_si:
-        type: "object"
-        items:
-          $ref: "#/definitions/measurements"
+        $ref: "#/definitions/measures"
       uk_hybrid:
-        type: "object"
-        items:
-          $ref: "#/definitions/measurements"
-  measurements:
+        $ref: '#/definitions/measures'
+  measures:
     type: "object"
     properties:
-      dewpt: 
+      dewpt:
         type: "integer"
       elev:
         type: "integer"
@@ -198,4 +190,3 @@ definitions:
         type: "integer"
       windSpeed:
         type: "integer"
-  

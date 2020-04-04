@@ -18,10 +18,10 @@ Name | Type | Description | Notes
 **station_id** | **string** |  | [optional] 
 **uv** | **float** |  | [optional] 
 **winddir** | **int** |  | [optional] 
-**imperial** | **object** |  | [optional] 
-**metric** | **object** |  | [optional] 
-**metric_si** | **object** |  | [optional] 
-**uk_hybrid** | **object** |  | [optional] 
+**imperial** | [**\Swagger\Client\Model\Measures**](Measures.md) |  | [optional] 
+**metric** | [**\Swagger\Client\Model\Measures**](Measures.md) |  | [optional] 
+**metric_si** | [**\Swagger\Client\Model\Measures**](Measures.md) |  | [optional] 
+**uk_hybrid** | [**\Swagger\Client\Model\Measures**](Measures.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

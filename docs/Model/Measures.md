@@ -1,4 +1,4 @@
-# Measurements
+# Measures
 
 ## Properties
 Name | Type | Description | Notes
