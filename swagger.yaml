@@ -196,4 +196,3 @@ definitions:
         type: "integer"
       windSpeed:
         type: "integer"
-  
