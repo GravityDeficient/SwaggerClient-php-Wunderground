@@ -69,7 +69,7 @@ $apiInstance = new Swagger\Client\Api\PWSObservationsApi(
 );
 $station_id = "station_id_example"; // string | The PWS station ID
 $units = "units_example"; // string | Unit type
-$format = "format_example"; // string | 
+$format = "json"; // string | 
 $numeric_precision = "numeric_precision_example"; // string | Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used.
 
 try {
@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [InlineResponse200](docs/Model/InlineResponse200.md)
  - [Measures](docs/Model/Measures.md)
  - [Observations](docs/Model/Observations.md)
 

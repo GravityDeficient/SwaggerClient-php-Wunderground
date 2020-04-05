@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **observationsAllOneDay**
-> \Swagger\Client\Model\Observations[] observationsAllOneDay($station_id, $units, $format, $numeric_precision)
+> \Swagger\Client\Model\InlineResponse200 observationsAllOneDay($station_id, $units, $format, $numeric_precision)
 
 
 
@@ -33,7 +33,7 @@ $apiInstance = new Swagger\Client\Api\PWSObservationsApi(
 );
 $station_id = "station_id_example"; // string | The PWS station ID
 $units = "units_example"; // string | Unit type
-$format = "format_example"; // string | 
+$format = "json"; // string | 
 $numeric_precision = "numeric_precision_example"; // string | Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used.
 
 try {
@@ -51,12 +51,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **station_id** | **string**| The PWS station ID |
  **units** | **string**| Unit type |
- **format** | **string**|  |
+ **format** | **string**|  | [default to json]
  **numeric_precision** | **string**| Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used. | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\Observations[]**](../Model/Observations.md)
+[**\Swagger\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **observationsCurrent**
-> \Swagger\Client\Model\Observations[] observationsCurrent($station_id, $units, $format, $numeric_precision)
+> \Swagger\Client\Model\InlineResponse200 observationsCurrent($station_id, $units, $format, $numeric_precision)
 
 
 
@@ -94,7 +94,7 @@ $apiInstance = new Swagger\Client\Api\PWSObservationsApi(
 );
 $station_id = "station_id_example"; // string | The PWS station ID
 $units = "units_example"; // string | Unit type
-$format = "format_example"; // string | 
+$format = "json"; // string | 
 $numeric_precision = "numeric_precision_example"; // string | Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used.
 
 try {
@@ -112,12 +112,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **station_id** | **string**| The PWS station ID |
  **units** | **string**| Unit type |
- **format** | **string**|  |
+ **format** | **string**|  | [default to json]
  **numeric_precision** | **string**| Optional parameter.  Set to ‘decimal’ to ensure data is returned in decimal format when needed. Will return integers if this value is not used. | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\Observations[]**](../Model/Observations.md)
+[**\Swagger\Client\Model\InlineResponse200**](../Model/InlineResponse200.md)
 
 ### Authorization
 

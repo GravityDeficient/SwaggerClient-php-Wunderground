@@ -97,7 +97,7 @@ class PWSObservationsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Observations[]
+     * @return \Swagger\Client\Model\InlineResponse200
      */
     public function observationsAllOneDay($station_id, $units, $format, $numeric_precision = null)
     {
@@ -115,11 +115,11 @@ class PWSObservationsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Observations[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function observationsAllOneDayWithHttpInfo($station_id, $units, $format, $numeric_precision = null)
     {
-        $returnType = '\Swagger\Client\Model\Observations[]';
+        $returnType = '\Swagger\Client\Model\InlineResponse200';
         $request = $this->observationsAllOneDayRequest($station_id, $units, $format, $numeric_precision);
 
         try {
@@ -171,7 +171,7 @@ class PWSObservationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Observations[]',
+                        '\Swagger\Client\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -219,7 +219,7 @@ class PWSObservationsApi
      */
     public function observationsAllOneDayAsyncWithHttpInfo($station_id, $units, $format, $numeric_precision = null)
     {
-        $returnType = '\Swagger\Client\Model\Observations[]';
+        $returnType = '\Swagger\Client\Model\InlineResponse200';
         $request = $this->observationsAllOneDayRequest($station_id, $units, $format, $numeric_precision);
 
         return $this->client
@@ -402,7 +402,7 @@ class PWSObservationsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Observations[]
+     * @return \Swagger\Client\Model\InlineResponse200
      */
     public function observationsCurrent($station_id, $units, $format, $numeric_precision = null)
     {
@@ -420,11 +420,11 @@ class PWSObservationsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Observations[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
      */
     public function observationsCurrentWithHttpInfo($station_id, $units, $format, $numeric_precision = null)
     {
-        $returnType = '\Swagger\Client\Model\Observations[]';
+        $returnType = '\Swagger\Client\Model\InlineResponse200';
         $request = $this->observationsCurrentRequest($station_id, $units, $format, $numeric_precision);
 
         try {
@@ -476,7 +476,7 @@ class PWSObservationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Observations[]',
+                        '\Swagger\Client\Model\InlineResponse200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class PWSObservationsApi
      */
     public function observationsCurrentAsyncWithHttpInfo($station_id, $units, $format, $numeric_precision = null)
     {
-        $returnType = '\Swagger\Client\Model\Observations[]';
+        $returnType = '\Swagger\Client\Model\InlineResponse200';
         $request = $this->observationsCurrentRequest($station_id, $units, $format, $numeric_precision);
 
         return $this->client
